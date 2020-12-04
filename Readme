@@ -2,7 +2,6 @@ This repository is to learn design pattern through "쉽게배워바로써먹는 
 
 Learning List
 
-
 Creational Pattern
 - Factory Pattern
 - Singleton Pattern
@@ -13,5 +12,7 @@ Creational Pattern
 
 Structual Pattern
 - Adapter Pattern
-
+- Bridge Pattern
+- Composite Pattern
+- Decorator Pattern
 
