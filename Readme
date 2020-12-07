@@ -20,4 +20,5 @@ Structual Pattern
 - Proxy Pattern
 
 Behavioral Pattern
-
+- Iterator Pattern
+- Command Pattern
