@@ -22,3 +22,5 @@ Structual Pattern
 Behavioral Pattern
 - Iterator Pattern
 - Command Pattern
+- Visitor Pattern
+- Chain Pattern
