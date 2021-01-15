@@ -32,7 +32,7 @@ jobs:
         
       - name: Access AWS instacse with SSH
         run: |
-          ssh -i ~/AWS_Server.pem -p 22 -l ${USER} ${IP}
+          ssh -tt -i ~/AWS_Server.pem -p 22 -l ${USER} ${IP}
         env:
           USER: ${{secrets.AWS_SERVER_USER}}
           IP: ${{secrets.AWS_SERVER_IP}}
