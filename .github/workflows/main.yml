@@ -33,7 +33,7 @@ jobs:
           key: ${{secrets.AWS_SERVER_PRIVATE_PEM_KEY}}
           port: 22
           script: |
-            whoami
-            ls -al
+            docker-compose down
+            docker-compose up
 
           
