@@ -32,11 +32,16 @@ jobs:
         
       - name: Access AWS instacse with SSH
         run: |
-          ssh -i ~/AWS_Server.pem -p 22 -l ${secrets.AWS_SERVER_USER} ${secrets.AWS_SERVER_IP}
-      
+          ssh -i ~/AWS_Server.pem -p 22 -l ${USER} ${IP}
+        env:
+          USER: ${secrets.AWS_SERVER_USER}
+          IP: ${secrets.AWS_SERVER_IP}
+        
       - name: Remove running docker containers
         run: |
-          docker-compose -f ${secrets.AWS_SERVER_DOCKER_COMPOSE_YML} down
+          docker-compose -f ${YML_PATH} down
+        env:
+          YML_PATH: ${secrets.AWS_SERVER_DOCKER_COMPOSE_YML}
         
       - name: Sleep for 10 seconds
         uses: jakejarvis/wait-action@master
@@ -45,6 +50,7 @@ jobs:
       
       - name: Start docker containers
         run: |
-          docker-compose -f ${secrets.AWS_SERVER_DOCKER_COMPOSE_YML} -d up
-
+          docker-compose -f ${YML_PATH} -d up
+        env:
+          YML_PATH: ${secrets.AWS_SERVER_DOCKER_COMPOSE_YML}
           
