@@ -28,20 +28,20 @@ jobs:
       - name: Make private key pem file
         run: echo ${PEM_KEY} > ~/AWS_Server.pem
         env:
-          PEM_KEY: ${secrets.AWS_SERVER_PRIVATE_PEM_KEY}
+          PEM_KEY: ${{secrets.AWS_SERVER_PRIVATE_PEM_KEY}}
         
       - name: Access AWS instacse with SSH
         run: |
           ssh -i ~/AWS_Server.pem -p 22 -l ${USER} ${IP}
         env:
-          USER: ${secrets.AWS_SERVER_USER}
-          IP: ${secrets.AWS_SERVER_IP}
+          USER: ${{secrets.AWS_SERVER_USER}}
+          IP: ${{secrets.AWS_SERVER_IP}}
         
       - name: Remove running docker containers
         run: |
           docker-compose -f ${YML_PATH} down
         env:
-          YML_PATH: ${secrets.AWS_SERVER_DOCKER_COMPOSE_YML}
+          YML_PATH: ${{secrets.AWS_SERVER_DOCKER_COMPOSE_YML}}
         
       - name: Sleep for 10 seconds
         uses: jakejarvis/wait-action@master
@@ -52,5 +52,5 @@ jobs:
         run: |
           docker-compose -f ${YML_PATH} -d up
         env:
-          YML_PATH: ${secrets.AWS_SERVER_DOCKER_COMPOSE_YML}
+          YML_PATH: ${{secrets.AWS_SERVER_DOCKER_COMPOSE_YML}}
           
